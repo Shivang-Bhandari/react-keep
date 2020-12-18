@@ -1,0 +1,30 @@
+.header {
+
+    display: flex;
+    flex: auto;
+    width: 100%;
+    padding: 16px 12px;
+    border-bottom: 1px solid #e2e2e2;
+    
+    &-hamburger {
+        display: block;
+        margin: auto 12px;
+        cursor: pointer;
+    }
+
+    &-title {
+        margin-right: 36px;
+    }
+
+    &-search {
+        background-color: rgba(32,33,36,1);
+        border: none;
+        height: 46px;
+        outline: none;
+        width: 100%;
+        padding: 0px 12px;
+        max-width: 480px;
+        font-size: 18px;
+        color: #eee;
+    }
+}

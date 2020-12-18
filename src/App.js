@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+import Header from './containers/Header';
+import SideBar from './containers/SideBar';
+
 import './App.scss';
 
 class App extends React.Component {
@@ -8,7 +12,8 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-          Hi
+          <Header />
+          <SideBar />
         </div>
     );
   }
