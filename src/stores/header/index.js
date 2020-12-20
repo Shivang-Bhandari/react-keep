@@ -18,7 +18,7 @@ export default function reduce(state = initialState, action = {}) {
         case types.UPDATE_ACTIVE_TAB:
             return state = {
                 ...state,
-                activeTab: action.data.activeTab,
+                activeTab: action.data,
             };
         case types.SIDEBAR_OPEN:
             return state = {

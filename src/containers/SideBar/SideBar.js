@@ -15,6 +15,10 @@ const SideBar = ({ children }) => {
     } = dispatchToProps(useDispatch());
     const [xPosition, setX] = React.useState(-WIDTH);
 
+    const handleChange = (value) => {
+        updateActiveTab(value);
+    }
+
     React.useEffect(() => {
         if(sideBarOpen) {
             setX(0);
@@ -37,7 +41,8 @@ const SideBar = ({ children }) => {
                 width: `${WIDTH}px`,
             }}
         >
-            Hello World!
+            <span onClick={() => {handleChange('notes')}}>NOTES</span>
+            <span onClick={() => {handleChange('archives')}}>ARCHIVES</span>
         </div>
     )
 };

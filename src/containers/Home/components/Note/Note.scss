@@ -1,0 +1,18 @@
+.note {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: default;
+    transition: all .2s ease-in-out;
+    position: relative;
+    text-align: left;
+
+    &-title {
+        font-size: 16px;
+    }
+
+    &-description {
+        font-size: 14px;
+        font-family: inherit;
+    }
+}

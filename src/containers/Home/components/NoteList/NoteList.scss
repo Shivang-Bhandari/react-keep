@@ -1,0 +1,13 @@
+.note-list {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+    position: relative;
+    margin: 50px auto;
+
+    margin: 0 20%;
+    max-width: 80%;
+    overflow: hidden;
+
+    margin-top: 36px;
+}

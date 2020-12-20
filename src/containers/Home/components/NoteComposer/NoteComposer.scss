@@ -1,0 +1,68 @@
+.note-composer {
+
+    position: relative;
+
+    &-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9;
+    }
+
+    &-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #202124;
+        border-radius: 8px;
+        z-index: 10;
+        width: 100%;
+        position: relative;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.20);
+        margin-top: 24px;
+    }
+
+    &-title {
+        background-color: rgba(32,33,36,1);
+        border: none;
+        height: 32px;
+        outline: none;
+        width: 100%;
+        max-width: 480px;
+        font-size: 20px;
+        color: #eee;
+
+        &-wrapper {
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            transition: 0.3s ease-in;
+        }
+    }
+
+    &-textarea {
+        background-color: rgba(32,33,36,1);
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        min-height: 40px;
+        line-height: 20px;
+        border: none;
+        padding: 14px 0;
+        font-size: 16px;
+        text-align: left;
+        color: #eee;
+        resize: none;
+
+        &:empty::before {
+            content: "Take a Note...";
+            color: gray;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

@@ -42,6 +42,8 @@ const Header = () => {
             className='header-search'
             onChange={handleChange}
             value={searchValue}
+            onBlur={() => updateSearchValue('')}
+            type="search"
         />
     ), [searchValue]);
 
