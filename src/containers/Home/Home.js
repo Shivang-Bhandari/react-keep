@@ -8,7 +8,7 @@ import NoteList from './components/NoteList';
 
 import './Home.scss';
 
-const Home = () => {
+const Home = ({ editNote, dismissEditNote }) => {
     const { allNotes, searchValue, activeTab } = useSelector(stateToProps);
     const { addNote } = dispatchToProps(useDispatch());
 
@@ -19,6 +19,7 @@ const Home = () => {
         if (titleHasSearchKeyword || descriptionHasSearchKeyword )
             return true
     }
+
     const [archivedNotes, activeNotes] = allNotes.reduce(([archivedNotes, activeNotes], note) => {
         return note.archived ? [[...archivedNotes, note], activeNotes] : [archivedNotes, [...activeNotes, note]];
     }, [[], []]);
@@ -38,6 +39,8 @@ const Home = () => {
             <NoteList
                 allNotes={getActiveNotes()}
                 isSearchResults={searchValue.length > 0}
+                editNote={editNote}
+                dismissEditNote={dismissEditNote}
             />
 
         </div>

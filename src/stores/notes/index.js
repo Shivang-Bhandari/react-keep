@@ -1,3 +1,4 @@
+import { updateActiveTab } from '../header/actions';
 import * as types from './actionTypes';
 
 
@@ -11,6 +12,7 @@ const initialState = {
         {id: "yquepd6", title: "lol title 4", description: "wow 2134", pinned: false, archived: true},
         {id: "yquepd7", title: "lol title 4", description: "wow 2134", pinned: false, archived: true},
     ],
+    noteToEdit: JSON.parse(localStorage.getItem('noteToEdit')) || null,
 };
 
 export default function reduce(state = initialState, action = {}) {
@@ -18,9 +20,44 @@ export default function reduce(state = initialState, action = {}) {
         case types.ADD_NOTE:
             localStorage.setItem('allNotes', JSON.stringify([...state.allNotes, action.data]));
             return state = {
+                ...state,
                 allNotes: [...state.allNotes, action.data],
             };
-            
+        
+        case types.UPDATE_NOTE:
+            console.log(action.data);
+            const updatedAllNotes = state.allNotes.map(note => note.id===action.data.id ? action.data : note);
+            localStorage.setItem('allNotes', JSON.stringify([...state.allNotes, action.data]));
+            return state = {
+                ...state,
+                allNotes: updatedAllNotes,
+            }
+
+        case types.DELETE_NOTE: {
+            console.log(action.data);
+            const updatedAllNotes = state.allNotes.filter(note => note.id !== action.data.id)
+            localStorage.setItem('allNotes', JSON.stringify([...state.allNotes, action.data]));
+            return state = {
+                ...state,
+                allNotes: updatedAllNotes,
+            }
+        }
+    
+        case types.EDIT_NOTE_ACTIVE:
+        console.log(action.data);
+            localStorage.setItem('noteToEdit', JSON.stringify(action.data));
+            return state = {
+                ...state,
+                noteToEdit: action.data,
+            }
+        
+        case types.EDIT_NOTE_INACTIVE:
+            localStorage.setItem('noteToEdit', null);
+            return state = {
+                ...state,
+                noteToEdit: null,
+            }
+        
         default:
             return state;
     }

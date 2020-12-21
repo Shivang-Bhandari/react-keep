@@ -25,5 +25,19 @@
         max-width: 480px;
         font-size: 18px;
         color: #eee;
+
+        &-wrapper {
+            display: flex;
+            width: 420px;
+            position: relative;
+
+
+            svg {
+                position: absolute;
+                right: 6px;
+                top: 12px;
+                cursor: pointer;
+            }
+        }
     }
 }

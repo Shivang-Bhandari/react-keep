@@ -5,9 +5,9 @@ import EditIcon from './EditIcon';
 import './Note.scss';
 
 
-const Note = ({ title, description, index }) => {
+const Note = ({ title, description, index, editNote, dismissEditNote }) => {
     return (
-        <div index={index} className="note">
+        <div index={index} className="note" onClick={editNote}>
             {/* <div
             >
                 <EditIcon />

@@ -5,7 +5,7 @@ import Note from '../Note';
 
 import './NoteList.scss';
 
-const NoteList = ({ allNotes, isSearchResults }) => {
+const NoteList = ({ allNotes, isSearchResults, editNote, dismissEditNote }) => {
     // separate out pinned and other notes from active notes for tab
     const [pinnedNotes, otherNotes] = allNotes.reduce(([pinnedNotes, otherNotes], note) => {
         return note.pinned ? [[...pinnedNotes, note], otherNotes] : [pinnedNotes, [...otherNotes, note]];
@@ -24,6 +24,8 @@ const NoteList = ({ allNotes, isSearchResults }) => {
                         description={note.description}
                         index={`${i}-pinned`}
                         key={`${i}-pinned`}
+                        editNote={() => editNote(note)}
+                        dismissEditNote={dismissEditNote}
                     />)
                 })}
             </div>
@@ -35,6 +37,8 @@ const NoteList = ({ allNotes, isSearchResults }) => {
                         description={note.description}
                         index={`${i}-pinned`}
                         key={`${i}-pinned`}
+                        editNote={() => editNote(note)}
+                        dismissEditNote={dismissEditNote}
                     />)
                 })}
             </div>
@@ -47,6 +51,8 @@ const NoteList = ({ allNotes, isSearchResults }) => {
                             description={note.description}
                             index={`${i}-pinned`}
                             key={`${i}-pinned`}
+                            editNote={() => editNote(note)}
+                            dismissEditNote={dismissEditNote}
                         />)
                     })}
                 </div>

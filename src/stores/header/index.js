@@ -3,7 +3,7 @@ import * as types from './actionTypes';
 
 const initialState = {
     sideBarOpen: false,
-    searchValue: '',
+    searchValue: localStorage.getItem('searchValue') || '',
     activeTab: 'notes',
 };
 
@@ -11,6 +11,7 @@ export default function reduce(state = initialState, action = {}) {
     switch (action.type) {
         case types.UPDATE_SEARCH_VALUE:
             console.log(action.data.value)
+            localStorage.setItem('searchValue', action.data);
             return state = {
                 ...state,
                 searchValue: action.data,
