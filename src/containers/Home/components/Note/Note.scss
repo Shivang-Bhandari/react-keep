@@ -14,5 +14,7 @@
     &-description {
         font-size: 14px;
         font-family: inherit;
+        word-break: break-all;
+        text-overflow: ellipsis;
     }
 }

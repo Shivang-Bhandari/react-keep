@@ -1,12 +1,22 @@
 .sidebar {
-    position: absolute;
+    position: fixed;
     height: 100vh !important;
     display: flex;
     flex-direction: column;
     border-right: 1px solid;
     border-radius: 0;
     border-color: #f2a365;
-    background-color: rgb(255, 255, 255);
+    background-color: #222831;
     transition: 0.8s ease;
     z-index: 999;
+    &-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9;
+        cursor: pointer;
+        z-index: 998;
+    }
 }

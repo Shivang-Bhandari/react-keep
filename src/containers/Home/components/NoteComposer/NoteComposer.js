@@ -13,12 +13,25 @@ const NoteComposer = ({ addNote }) => {
     const [isHovered, setIsHovered] = React.useState(true);
 
     const renderMenuItems = () => {
-        return (<div
-            className="menu-item-pin"
-            style={{
-                backgroundImage: PIN_SVG_URL
-            }}
-        />);
+        return (
+            <div className="note-composer-menu-items">
+                <div
+                    onClick={(e) => {handleSubmit(e, true)}}
+                    className="note-composer-menu-item"
+                >
+                    Pin
+                </div>
+                <div onClick={handleSubmit} className="note-composer-menu-item">
+                    Close
+                </div>
+                <div
+                    onClick={(e) => { handleSubmit(e, false, true) }}
+                    className="note-composer-menu-item"
+                >
+                    Archive
+                </div>
+            </div>
+        );
     };
 
     React.useEffect(() => {
@@ -32,15 +45,13 @@ const NoteComposer = ({ addNote }) => {
     const showTitleField = () => {
         setTitleFieldVisible(true)
     }
-
-
+    
     const hideTitleField = () => {
         if(!value.length)
             setTitleFieldVisible(false)
     }
 
-    const handleSubmit = (e) => {
-        console.log(value, noteValue);
+    const handleSubmit = (e, isPinned=false, isArchived=false) => {
         e.preventDefault();
         const noteData = {
             id: Math.random()
@@ -48,8 +59,8 @@ const NoteComposer = ({ addNote }) => {
                 .substring(7),
             title: value,
             description: noteValue,
-            pinned: false,
-            archived: false,
+            pinned: isPinned,
+            archived: isArchived,
         };
 
         console.log(noteData);
@@ -64,8 +75,6 @@ const NoteComposer = ({ addNote }) => {
             onMouseEnter={() => { setIsHovered(true) }}
             onMouseLeave={() => { setIsHovered(true) }}
         >
-            {isHovered && renderMenuItems()}
-
             {titleFieldVisible && (
                 <div className="note-composer-overlay" onClick={hideTitleField} />
             )}
@@ -91,10 +100,9 @@ const NoteComposer = ({ addNote }) => {
                     name="content"
                     placeholder="Take a note..."
                 />
-                <button type="Submit">
-                    <span>&#43;</span>
-                </button>
+                {isHovered && renderMenuItems()}
             </form>
+            
         </div>
     )
 };

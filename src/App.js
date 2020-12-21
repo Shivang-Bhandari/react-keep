@@ -13,8 +13,8 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-          <Header />
           <SideBar />
+          <Header />
           <Home />
         </div>
     );

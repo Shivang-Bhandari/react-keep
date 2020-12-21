@@ -31,19 +31,30 @@ const SideBar = ({ children }) => {
         })
     }, [sideBarOpen]);
 
-    console.log("🚀 ~ file: SideBar.js ~ line 17 ~ SideBar ~ xPosition", xPosition)
-
     return(
-        <div
-            className="sidebar"
-            style={{
-                transform: `translateX(${xPosition}px)`,
-                width: `${WIDTH}px`,
-            }}
-        >
-            <span onClick={() => {handleChange('notes')}}>NOTES</span>
-            <span onClick={() => {handleChange('archives')}}>ARCHIVES</span>
-        </div>
+        <>
+            <div
+                className="sidebar"
+                style={{
+                    transform: `translateX(${xPosition}px)`,
+                    width: `${WIDTH}px`,
+                }}
+            >
+                <span
+                    className="sidebar-item"
+                    onClick={() => {handleChange('notes')}}
+                >
+                    NOTES
+                </span>
+                <span
+                    className="sidebar-item"
+                    onClick={() => {handleChange('archived')}}
+                >
+                    ARCHIVES
+                </span>
+            </div>
+            { sideBarOpen && <div className="sidebar-overlay" onClick={hideSideMenu} /> }
+        </>
     )
 };
 
