@@ -72,6 +72,7 @@
             margin-left: auto;
             margin-right: 0;
             width: fit-content;
+            transition: visibility 0.2s ease-in;
         }
         &-item {
             cursor: pointer;

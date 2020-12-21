@@ -42,7 +42,6 @@ const App = () => {
   }
 
   const dismissEditNote = () => {
-    console.log('dismissed ')
     closeEditNote();
   }
 
