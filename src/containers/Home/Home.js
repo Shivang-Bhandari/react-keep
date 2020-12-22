@@ -27,9 +27,10 @@ const Home = ({ editNote, dismissEditNote, handleEditSubmit }) => {
 	const notesForActiveTab = activeTab === 'archived' ? archivedNotes : activeNotes;
 
 	const getActiveNotes = React.useCallback(() => {
-		if (!searchValue) {
-			return allNotes.filter(filterNote);
-		});
+		if (!searchValue)
+			return notesForActiveTab;
+		return allNotes.filter(filterNote);
+	});
 
 	return (
 		<div className="home"
