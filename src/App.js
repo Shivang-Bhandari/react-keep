@@ -49,7 +49,11 @@ const App = () => {
     <div className="App">
       <SideBar />
       <Header />
-      <Home editNote={editNote} dismissEditNote={dismissEditNote}/>
+      <Home
+        editNote={editNote}
+        dismissEditNote={dismissEditNote}
+        handleEditSubmit={handleEditSubmit}
+      />
       {
         renderEditNote &&
         noteToEdit &&

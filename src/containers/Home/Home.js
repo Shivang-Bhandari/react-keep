@@ -8,7 +8,7 @@ import NoteList from './components/NoteList';
 
 import './Home.scss';
 
-const Home = ({ editNote, dismissEditNote }) => {
+const Home = ({ editNote, dismissEditNote, handleEditSubmit }) => {
     const { allNotes, searchValue, activeTab } = useSelector(stateToProps);
     const { addNote } = dispatchToProps(useDispatch());
 
@@ -41,6 +41,7 @@ const Home = ({ editNote, dismissEditNote }) => {
                 isSearchResults={searchValue.length > 0}
                 editNote={editNote}
                 dismissEditNote={dismissEditNote}
+                handleEditSubmit={handleEditSubmit}
             />
 
         </div>
