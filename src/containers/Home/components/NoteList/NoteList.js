@@ -24,56 +24,71 @@ const NoteList = ({ allNotes, isSearchResults, editNote, dismissEditNote, handle
 			...note,
 			pinned: !note.pinned,
 		}
-		console.log("🚀 ~ file: NoteList.js ~ line 24 ~ togglePinned ~ updatedNote", updatedNote)
 		handleEditSubmit(updatedNote);
+	}
+
+	const renderSearchResults = () => {
+		return (
+			<div className="note-list-notes">
+				{ allNotes.map((note, i) => {
+					return (<Note
+						note={note}
+						index={`${i}-pinned`}
+						editNote={() => editNote(note)}
+						dismissEditNote={dismissEditNote}
+						toggleArchived={() => toggleArchived(note)}
+						togglePinned={() => togglePinned(note)}
+					/>)
+				})}
+			</div>
+		);
+	}
+
+	const renderNotesWithCategories = () => {
+		return(
+			<>
+				{pinnedNotes.length > 0 && (
+					<>
+						<div className="note-list-category">PINNED</div>
+						<div className="note-list-notes">
+							{pinnedNotes.map((note, i) => {
+								return (<Note
+									note={note}
+									index={`${i}-pinned`}
+									editNote={() => editNote(note)}
+									dismissEditNote={dismissEditNote}
+									toggleArchived={() => toggleArchived(note)}
+									togglePinned={() => togglePinned(note)}
+								/>)
+							})}
+						</div>
+					</>
+				)}
+				
+				{otherNotes.length > 0 && (
+					<>
+						<div className="note-list-category">OTHERS</div>
+						<div className="note-list-notes">
+							{otherNotes.map((note, i) => {
+								return (<Note
+									note={note}
+									index={`${i}-pinned`}
+									editNote={() => editNote(note)}
+									dismissEditNote={dismissEditNote}
+									toggleArchived={() => toggleArchived(note)}
+									togglePinned={() => togglePinned(note)}
+								/>)
+							})}
+						</div>
+					</>
+				)}
+			</>
+		)
 	}
 
 	const renderNotes = () => {
 		if (!allNotes.length) return (<span>No Notes Found!</span>);
-
-		return !isSearchResults ? (
-			<>
-				<div className="note-list-category">PINNED</div>
-				<div className="note-list-notes">
-					{pinnedNotes.map((note, i) => {
-						return (<Note
-							note={note}
-							index={`${i}-pinned`}
-							editNote={() => editNote(note)}
-							dismissEditNote={dismissEditNote}
-							toggleArchived={() => toggleArchived(note)}
-							togglePinned={() => togglePinned(note)}
-						/>)
-					})}
-				</div>
-				<div className="note-list-category">OTHERS</div>
-				<div className="note-list-notes">
-					{otherNotes.map((note, i) => {
-						return (<Note
-							note={note}
-							index={`${i}-pinned`}
-							editNote={() => editNote(note)}
-							dismissEditNote={dismissEditNote}
-							toggleArchived={() => toggleArchived(note)}
-							togglePinned={() => togglePinned(note)}
-						/>)
-					})}
-				</div>
-			</>
-		) : (
-				<div className="note-list-notes">
-					{ allNotes.map((note, i) => {
-						return (<Note
-							note={note}
-							index={`${i}-pinned`}
-							editNote={() => editNote(note)}
-							dismissEditNote={dismissEditNote}
-							toggleArchived={() => toggleArchived(note)}
-							togglePinned={() => togglePinned(note)}
-						/>)
-					})}
-				</div>
-			)
+		return !isSearchResults ? renderNotesWithCategories() : renderSearchResults();
 	}
 
 	return (

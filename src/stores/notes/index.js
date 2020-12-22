@@ -22,7 +22,6 @@ export default function reduce(state = initialState, action = {}) {
 			};
 
 		case types.UPDATE_NOTE:
-			console.log(action.data);
 			const updatedAllNotes = state.allNotes.map(note => note.id === action.data.id ? action.data : note);
 			localStorage.setItem('allNotes', JSON.stringify([...state.allNotes, action.data]));
 			return state = {
@@ -31,7 +30,6 @@ export default function reduce(state = initialState, action = {}) {
 			}
 
 		case types.DELETE_NOTE: {
-			console.log(action.data);
 			const updatedAllNotes = state.allNotes.filter(note => note.id !== action.data.id)
 			localStorage.setItem('allNotes', JSON.stringify([...state.allNotes, action.data]));
 			return state = {
@@ -41,7 +39,6 @@ export default function reduce(state = initialState, action = {}) {
 		}
 
 		case types.EDIT_NOTE_ACTIVE:
-			console.log(action.data);
 			localStorage.setItem('noteToEdit', JSON.stringify(action.data));
 			return state = {
 				...state,
