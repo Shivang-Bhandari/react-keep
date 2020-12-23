@@ -1,9 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Note.scss';
 
-
-const Note = ({ note, index, editNote, toggleArchived, togglePinned }) => {
+/**
+ * Component to render contents of a note
+ * @component
+ * @param {Object} props
+ * @param {Object} props.note
+ * @param {String} props.index
+ * @param {() => {}} props.editNote
+ * @param {() => {}} props.toggleArchived
+ * @param {() => {}} props.togglePinned
+ * @param {() => {}} props.onDelete
+ * @example
+ * <Note
+		note={note}
+		index={index}
+		editNote={editNote}
+		toggleArchived={dismissEditNote}
+		togglePinned={handleEditSubmit}
+		onDelete={onDelete}
+	/>
+ *
+ */
+const Note = ({ note, index, editNote, toggleArchived, togglePinned, onDelete }) => {
 	const [isHovered, setIsHovered] = React.useState(false);
 
 	const renderTitle = React.useCallback(() => {
@@ -34,19 +55,32 @@ const renderMenuItems = React.useCallback(() => {
 		toggleArchived();
 	}
 
+	const handleDelete = (e) => {
+		e.preventDefault()
+		if (window.confirm('Delete this note?')) {
+			onDelete(note);
+		}
+	}
+
 	return (
 		<div className="note-menu-items" style={menuStyles}>
 			<div
 				onClick={(e) => handleTogglePinned(e)}
 				className="note-menu-item"
 			>
-				{note.pinned ? 'Unpin' : 'Pin'}
+				{note.pinned ? 'UNPIN' : 'PIN'}
 			</div>
 			<div
 				onClick={(e) => handleToggleArchived(e)}
 				className="note-menu-item"
 			>
-				{note.archived ? 'Unarchive' : 'Archive'}
+				{note.archived ? 'UNARCHIVE' : 'ARCHIVE'}
+			</div>
+			<div
+				onClick={(e) => handleToggleArchived(e)}
+				className="note-menu-item"
+			>
+				DELETE
 			</div>
 		</div>
 	);
@@ -63,5 +97,35 @@ return (
 		</div>
 	)
 }
+
+NoteList.propTypes = {
+	note: PropTypes.shape({
+			id: PropTypes.string,
+			archived: PropTypes.bool,
+			pinned: PropTypes.bool,
+			title: PropTypes.string,
+			description: PropTypes.string,
+		}),
+	index: PropTypes.string,
+	editNote: PropTypes.func,
+	dismissEditNote: PropTypes.func,
+	handleEditSubmit: PropTypes.func,
+	onDelete: PropTypes.func,
+};
+
+NoteList.defaultProps = {
+	note: {
+		id: '123',
+		archived: false,
+		pinned: false,
+		title: '',
+		description: '',
+	},
+	index: '1',
+	editNote: () => { },
+	dismissEditNote: () => { },
+	handleEditSubmit: () => { },
+	onDelete: () => { },
+};
 
 export default Note;

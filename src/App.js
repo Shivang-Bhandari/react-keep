@@ -10,6 +10,12 @@ import EditNote from './containers/EditNote';
 
 import './App.scss';
 
+/**
+ * Component to render the homepage
+ * @component
+ * @example
+ * <App />
+ */
 const App = () => {
   const { noteToEdit } = useSelector(stateToProps);
   const {
@@ -53,6 +59,7 @@ const App = () => {
         editNote={editNote}
         dismissEditNote={dismissEditNote}
         handleEditSubmit={handleEditSubmit}
+        onDelete={handleDeleteNote}
       />
       {
         renderEditNote &&

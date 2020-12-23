@@ -1,10 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { stateToProps, dispatchToProps } from './maps';
 
 import './Header.scss';
 
+/**
+ * Component to show sidebar on homepage with available tabs
+ * @component
+ * @example
+ * <Header/>
+ */
 const Header = () => {
     const { activeTab, searchValue, sideBarOpen} = useSelector(stateToProps);
     const { updateSearchValue,
@@ -32,7 +37,7 @@ const Header = () => {
     ), [sideBarOpen]);
 
     const renderHeaderTitle = React.useCallback(() => (
-        <span className="header-title">{activeTab}</span>
+        <span className="header-title">{activeTab.toUpperCase()}</span>
     ), [activeTab]);
 
     const renderSearchInput = React.useCallback(() => (

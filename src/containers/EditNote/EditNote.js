@@ -3,7 +3,24 @@ import PropTypes from 'prop-types'
 
 import './EditNote.scss';
 
-const UpdateNoteModal = ({ note, onSubmit, onClose, onDelete }) => {
+/**
+ * Component to render contents of a note
+ * @component
+ * @param {Object} props
+ * @param {Object} props.note
+ * @param {() => {}} props.onSubmit
+ * @param {() => {}} props.onClose
+ * @param {() => {}} props.onDelete
+ * @example
+ * <EditNote
+		note={note}
+		onSubmit={onSubmit}
+		onClose={onClose}
+		onDelete={onDelete}
+	/>
+ *
+ */
+const EditNote = ({ note, onSubmit, onClose, onDelete }) => {
 
 	const [title, setTitle] = useState(note.title);
 	const [description, setDescription] = useState(note.description);
@@ -89,6 +106,32 @@ const UpdateNoteModal = ({ note, onSubmit, onClose, onDelete }) => {
 		</div>
 	);
 
-}
+};
 
-export default UpdateNoteModal;
+EditNote.propTypes = {
+	note: PropTypes.shape({
+		id: PropTypes.string,
+		archived: PropTypes.bool,
+		pinned: PropTypes.bool,
+		title: PropTypes.string,
+		description: PropTypes.string,
+	}),
+	onSubmit: PropTypes.func,
+	onClose: PropTypes.func,
+	onDelete: PropTypes.func,
+};
+
+EditNote.defaultProps = {
+	note: {
+		id: '123',
+		archived: false,
+		pinned: false,
+		title: '',
+		description: '',
+	},
+	onSubmit: () => { },
+	onClose: () => { },
+	onDelete: () => { },
+};
+
+export default EditNote;

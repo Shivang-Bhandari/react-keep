@@ -2,12 +2,12 @@ import * as types from './actionTypes';
 
 const initialState = {
 	allNotes: JSON.parse(localStorage.getItem('allNotes')) || [
-		{ id: "yquepd1", title: "title 1", description: "wow 2134", pinned: false, archived: false },
-		{ id: "yquepd2", title: "title 2", description: "asdawow 2134sd", pinned: false, archived: false },
-		{ id: "yquepd4", title: "title 4", description: "wow 2134", pinned: true, archived: false },
-		{ id: "yquepd5", title: "pinned archived", description: "wow 2134", pinned: true, archived: true },
-		{ id: "yquepd6", title: "title 8", description: "wow 2134", pinned: false, archived: true },
-		{ id: "yquepd7", title: "title 9", description: "wow 2134", pinned: false, archived: true },
+		{ id: "yquepd1", title: "Note 1", description: "description", pinned: false, archived: false },
+		{ id: "yquepd2", title: "Note 2", description: "description 2", pinned: false, archived: false },
+		{ id: "yquepd4", title: "Note 3", description: "description 3", pinned: true, archived: false },
+		{ id: "yquepd5", title: "pinned archived", description: "archived description", pinned: true, archived: true },
+		{ id: "yquepd6", title: "Archived 1", description: "Archived description 2", pinned: false, archived: true },
+		{ id: "yquepd7", title: "Archived 2", description: "Archived description 3", pinned: false, archived: true },
 	],
 	noteToEdit: JSON.parse(localStorage.getItem('noteToEdit')) || null,
 };
