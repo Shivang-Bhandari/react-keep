@@ -132,11 +132,11 @@ const NoteComposer = ({ addNote }) => {
 	)
 };
 
-NoteList.propTypes = {
+NoteComposer.propTypes = {
 	addNote: PropTypes.func,
 }
 
-NoteList.defaultProps = {
+NoteComposer.defaultProps = {
 	addNote: () => { },
 }
 

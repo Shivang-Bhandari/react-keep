@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Note from '../Note';
 
 import './NoteList.scss';
@@ -124,21 +124,13 @@ const NoteList = ({ allNotes, isSearchResults, editNote, dismissEditNote, handle
 };
 
 NoteList.propTypes = {
-	allNotes: PropTypes.arrayof(
-		PropTypes.shape({
-			id: PropTypes.string,
-			archived: PropTypes.bool,
-			pinned: PropTypes.bool,
-			title: PropTypes.string,
-			description: PropTypes.string,
-		})
-	),
+	allNotes: PropTypes.array,
 	isSearchResults: PropTypes.bool,
 	editNote: PropTypes.func,
 	dismissEditNote: PropTypes.func,
 	handleEditSubmit: PropTypes.func,
 	onDelete: PropTypes.func,
-}
+};
 
 NoteList.defaultProps = {
 	allNotes: [],
@@ -147,6 +139,6 @@ NoteList.defaultProps = {
 	dismissEditNote: () => { },
 	handleEditSubmit: () => { },
 	onDelete: () => { },
-}
+};
 
 export default NoteList;

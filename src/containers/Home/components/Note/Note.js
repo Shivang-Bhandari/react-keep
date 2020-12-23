@@ -98,7 +98,7 @@ return (
 	)
 }
 
-NoteList.propTypes = {
+Note.propTypes = {
 	note: PropTypes.shape({
 			id: PropTypes.string,
 			archived: PropTypes.bool,
@@ -113,7 +113,7 @@ NoteList.propTypes = {
 	onDelete: PropTypes.func,
 };
 
-NoteList.defaultProps = {
+Note.defaultProps = {
 	note: {
 		id: '123',
 		archived: false,
